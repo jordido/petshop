@@ -1,0 +1,25 @@
+<%= form_for(@pet) do |p| %>
+  <% if @pet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
+
+      <ul>
+      <% @pet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= p.label :name %><br>
+    <%= p.text_field :name %>
+  </div>
+  <div class="field">
+    <%= p.label :user_id %><br>
+    <%= p.select :user_id, User.all.collect{ |u| [u.name, u.id]}, include_blank: true %>
+  </div>
+  <div class="actions">
+    <%= p.submit %>
+  </div>
+<% end %>

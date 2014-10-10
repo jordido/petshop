@@ -1,0 +1,2 @@
+module SpecieHelper
+end

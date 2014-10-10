@@ -1,0 +1,13 @@
+<h1>Animals</h1>
+<ul class = "list">
+	<% if @animals %>
+		<% @animals.all.each do |animal| %>
+			<li> <%= animal.name %> <%= animal.latin_name %> <%= animal.av_weight %> <%= animal.stock %> 
+			<%= animal.pets.where(user_id: nil).count%></li>
+			<%end%>
+			<%else%>
+			No animals
+	<% end %>
+</ul>
+
+<%= link_to "New animal", new_animal_path %>

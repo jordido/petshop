@@ -1,0 +1,19 @@
+<h1>Pets</h1>
+
+<ul>
+	<% if @pets.any? %>
+		<% @pets.all.each do |p| %>
+			<li><%= p.name %> belongs to: <%= p.user.name if p.user %>
+				<% if current_user && !p.user %>
+					<%= link_to "Buy", buy_path(p), method: :post, data: { confirm: 'Are you sure you want to buy it?' } %>
+				<%end%>
+			</li>
+		<%end%>
+		<% else %>
+			<%= render text: "No pets" %>
+	<%end%>
+</ul>
+
+<%= link_to "New pet", new_pet_path %>
+
+
