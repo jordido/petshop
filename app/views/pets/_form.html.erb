@@ -16,6 +16,10 @@
     <%= p.text_field :name %>
   </div>
   <div class="field">
+    <%= p.label :animal %></br>
+    <%= p.select :animal_id, Animal.all.collect{ |a| [a.name, a.id]} %>
+  </div>
+  <div class="field">
     <%= p.label :user_id %><br>
     <%= p.select :user_id, User.all.collect{ |u| [u.name, u.id]}, include_blank: true %>
   </div>

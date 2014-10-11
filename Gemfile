@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'foundation-rails'
 gem 'rspec-rails', group: [:development, :test]
 gem 'faker'
 gem 'bcrypt'

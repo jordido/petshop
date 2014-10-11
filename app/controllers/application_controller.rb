@@ -21,13 +21,10 @@ class ApplicationController < ActionController::Base
  helper_method :current_user
 
 def user_is_admin
-	if current_user && current_user.admin
-		return true
-	else
-		return false
-	end
-
+	current_user && current_user.admin
 end
 
+helper_method :current_user
+helper_method :user_is_admin
 
 end

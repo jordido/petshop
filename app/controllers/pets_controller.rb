@@ -17,6 +17,17 @@ class PetsController < ApplicationController
   end
 
   def update
+    @pet = Pet.find(params[:id])
+    ## update with params from browser
+    if @pet.update(pet_params)
+      redirect_to pets_url
+    else
+      render :edit
+    end
+  end
+
+  def show
+    
   end
 
   def destroy
@@ -34,7 +45,7 @@ class PetsController < ApplicationController
   end
 
   def create
-  	@pet = Pet.new(pets_params)
+  	@pet = Pet.new(pet_params)
 		if @pet.save
 			redirect_to pets_url
 		else
@@ -44,7 +55,7 @@ class PetsController < ApplicationController
   end
 
   private
-  def pets_params
+  def pet_params
   	params.require(:pet).permit(:name, :user_id, :animal_id)
   end
 

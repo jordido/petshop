@@ -3,10 +3,16 @@
 <ul>
 	<% if @pets.any? %>
 		<% @pets.all.each do |p| %>
-			<li><%= p.name %> belongs to: <%= p.user.name if p.user %>
+			<li><%= p.name %> is a <%= p.animal.name %> and 
+				<% if p.user %> 
+					belongs to: <%= p.user.name %>
+					<%else%>
+					is looking for an owner
+				<%end%>
 				<% if current_user && !p.user %>
 					<%= link_to "Buy", buy_path(p), method: :post, data: { confirm: 'Are you sure you want to buy it?' } %>
 				<%end%>
+				<%= link_to "Edit", edit_pet_path(p) %>
 			</li>
 		<%end%>
 		<% else %>
@@ -15,5 +21,3 @@
 </ul>
 
 <%= link_to "New pet", new_pet_path %>
-
-
