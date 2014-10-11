@@ -33,27 +33,7 @@
               <li class="divider"></li>
           </ul>
           <ul class="right">
-            <% unless current_user %>
-              <% @user = User.new %>
-              <% params = [] %>
-              <%= form_for(@user) do |u| %>            
-                  <div class="small-3 columns">
-                      <%= u.label :name %>
-                      <%= u.text_field :name %>
-                  </div>
-                  <div class="small-4 columns">
-                      <%= u.label :password %>
-                      <%= u.password_field :password %>                         
-                  </div>     
-                  <%= u.submit "Log in",  :class => "button" %>                                 
-              <% end %>
-              <% else %>           
-                  <div class="row collapse">
-                    <div class="small-4 columns">
-                    Welcome, <%= current_user.name %>! Log out <%= link_to "here", logout_path %>
-                    </div>
-                  </div>                  
-            <%end%>
+            <%= render new_session_path %>
           </ul>
         </section>
     </nav>
